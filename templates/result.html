@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block content %}
+<div class="float-container">
+  <div class="float-child">
+      <h2 class="a">Uploaded Image:</h2>
+      <div><img src="{{ url_for('upload_img', filename=file_name) }}" class="img-fluid"></div>
+  </div>
+  <div class="float-child">
+      <h2 class="a">Deblurred Image:</h2>
+      <div><img src="{{ url_for('deblurred_img', filename=deblurred_file) }}" class="img-fluid"></div>   
+  </div>
+</div>
+
+<div class="download-container">
+  <a href="{{ url_for('deblurred_img', filename=deblurred_file) }}" download class="download-button">Download Image</a>
+</div>
+
+  <style>
+    .download-container {
+        text-align: right;
+        margin: 20px 0;
+    }
+
+    .download-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #2E7D32;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .download-button:hover {
+        background-color: #1B5E20;
+        color: #E8F5E9;
+        text-decoration: underline;
+    }
+
+    .a {
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .float-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .float-child {
+        flex: 1;
+        padding: 20px;
+        margin: 10px;
+        background-color: #f0f5f1;
+        border: 1px solid #c8e6c9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        border-radius: 5px;
+    }
+
+    .float-child h2 {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
